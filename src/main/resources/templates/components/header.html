@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Header</title>
+<link
+	rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+>
+<script
+	src="https://kit.fontawesome.com/a076d05399.js"
+	crossorigin="anonymous"
+></script>
+</head>
+<body>
+	<div
+		th:fragment="header"
+		class="bg-primary text-white py-3"
+	>
+		<div
+			class="container d-flex justify-content-center align-items-center"
+		>
+			<nav
+				class="nav navbar navbar-dark bg-dark fixed-top justify-content-center"
+			>
+				<a
+					href="/"
+					class="nav-link text-white mx-3"
+				>Home</a> <a
+					href="/new"
+					class="nav-link text-white mx-3"
+				>Add Product</a> <a
+					href="/list"
+					class="nav-link text-white mx-3"
+				>View Product</a>
+			</nav>
+		</div>
+	</div>
+</body>
+</html>
