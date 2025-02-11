@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.app.entity.Product;
 import com.app.repository.ProductRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductService {
 
@@ -34,16 +36,20 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
-    // Update an existing product
+ // Update an existing product
+    @Transactional
     public Product updateProduct(Long id, Product productDetails) {
         Optional<Product> existingProductOptional = productRepository.findById(id);
         if (existingProductOptional.isPresent()) {
             Product existingProduct = existingProductOptional.get();
             existingProduct.setName(productDetails.getName());
+            existingProduct.setType(productDetails.getType());  
+            existingProduct.setUnit(productDetails.getUnit());  
             return productRepository.save(existingProduct);
         }
-        return null; // Return null if product not found
+        throw new RuntimeException("Product not found with ID: " + id); // Better error handling
     }
+
 
     // Delete a product by ID
     public void deleteProduct(Long id) {

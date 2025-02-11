@@ -48,10 +48,10 @@ public class ProductController {
 	// Update the existing product
 	@PostMapping("/edit/{id}")
 	public String updateProduct(@PathVariable("id") Long id, @ModelAttribute Product product) {
-		product.setId(id); 
-		productService.updateProduct(id, product);
-		return "redirect:/list"; // Redirect to the product list after updating
+	    productService.updateProduct(id, product);
+	    return "redirect:/list"; // Redirect to updated product list
 	}
+
 
 	// Delete a product
 	@GetMapping("/delete/{id}")
